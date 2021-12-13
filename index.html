@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>차이홍중국어</title>
+<!--css-->
+        <link rel="stylesheet" type="text/css" href="style/reset.css">
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+<!--js/jq-->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <!--parallax-->
+        <script src='parallax_background/js/parallax-background.min.js'></script>
+        <script>
+            $(function(){
+/*--------------변수 저장*/
+                //visual
+                var $vis_btn=$('ul#visual_btn li');
+                var $vis_display=$('div#visual_view');
+                var idx=0; //슬라이드 번호
+                
+                //contents3
+                var $con3_btn=$('ul#level_btn li');
+                
+/*--------------visual slider*/
+                //visual slider 함수
+                function visualslide(tmp){
+                    idx=idx+tmp; //슬라이드 번호 결정
+                    
+                    //visual 보이기
+                    $('html, body').animate({scrollTop:0},10); //동작 위치
+                    $vis_display.children().fadeOut(); //모든 visual 숨기기
+                    $vis_display.children().eq(idx).fadeIn(); //선택된 visual 보이기
+                    
+                    idx=0; //idx값 초기화
+                }
+                //버튼을 클릭했을 때
+                $vis_btn.click(function(){
+                    num=$(this).index(); //클릭된 index 번호 구하기
+                    visualslide(num); //fadeslide 함수 실행
+                    
+                    //버튼 디자인
+                    $vis_btn.children().css({'width':'50px','background':'0'});
+                    $(this).children().css({'width':'80px','background-color':'#fff'});
+                });
+                
+/*--------------contents2(one-stop 솔루션) parallax*/
+                $('.parallax1').parallaxBackground({
+                    parallaxBgImage:'image/onestop_bg.jpg',
+                    parallaxBgPosition:'center center',
+                    parallaxBgRepeat:'no-repeat',
+                    parallaxBgSize:'cover',
+                    parallaxSpeed:5,
+                    parallaxDirection:'up'
+                });
+                
+                
+/*--------------contents3(단계별 차이홍) slider*/
+                //contents3 slider 함수
+                function con3slide(add){
+                    idx=idx+add; //슬라이드 번호 결정
+                    
+                    //내용 보이기
+                    $('html, body').animate({ //동작 위치
+                        scrollTop:$('div#contents3').position().top
+                    },10);
+                    $('div#container_txt').children().fadeOut(); //모든 내용 숨기기
+                    $('div#container_txt').children().eq(idx).fadeIn(); //선택된 내용만 보이기
+                    
+                    idx=0; //idx값 초기화
+                }
+                
+                //버튼을 클릭했을 때
+                $con3_btn.click(function(){
+                    num=$(this).index(); //클릭된 index 번호 구하기
+                    con3slide(num); //con3slide 함수 실행
+                    
+                    //버튼 디자인
+                    $con3_btn.children().css({'background-color':'#fff', 'color':'#757575', 'border':'1px solid #757575'});
+                    $(this).children().css({'background-color':'#d83048', 'color':'#fff', 'border':'0'});
+                });
+            }); //ready end
+        </script>
+    </head>
+    <body>
+        <div id="wrap">
+<!--fixed nav-->
+            <div id="fixed_nav">
+                <ul id="my_nav">
+                    <li>
+                        <a href="#">마이<br>페이지</a>
+                        <p></p>
+                    </li>
+                    <li>
+                        <a href="#">나의<br>강의실</a>
+                        <p></p>
+                    </li>
+                    <li>
+                        <a href="#">수업<br>스케줄<br>등록</a>
+                        <p></p>
+                    </li>
+                    <li>
+                        <a href="#">쿠폰<br>등록</a>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+<!--header-->
+            <div id="opacity"></div>
+            <header>
+                <div id="htop_bg">
+                    <!--header top-->
+                    <ul id="h_top">
+                        <li><a href="#">HSK 시험 접수</a></li>
+                        <li><a href="#">차이홍 공자학당</a><i></i></li>
+                        <li><a href="#">차이홍 칼리지</a><i></i></li>
+                        <li><a href="#">차이홍 화상ON</a><i></i></li>
+                    </ul>
+                </div>
+                <!--header bottom-->
+                <div id="opcity"></div>
+                <div id="h_btm_bg">
+                    <div id="h_bottom">
+                        <!--logo-->
+                        <h1><a href="#"><img src="image/m1_logo.png" alt="중국어전문교육 차이홍"></a></h1>
+                        <!--메뉴바 아이콘(미디어쿼리)-->
+                        <p id="menubar"><img src="image/menubar_icon.png" alt="메뉴 더보기"></p>
+                        <!--nav-->
+                        <nav>
+                            <ul>
+                                <li><a href="#">차이홍중국어</a></li>
+                                <li><a href="#">교재소개</a></li>
+                                <li><a href="#">차이홍 B2B</a></li>
+                                <li><a href="#">차이홍 SQUARE</a></li>
+                                <li><a href="#">고객센터</a></li>
+                            </ul>
+                        </nav>
+                        <!--user nav-->
+                        <ul id="user_nav">
+                            <li><a href="#">로그인</a><i><!--장식 구분선--></i></li>
+                            <li><a href="#">회원가입</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+<!--section-->
+            <section>
+<!--------------비주얼-->
+                <div id="visual">
+                    <ul id="visual_btn">
+                        <li><a href="#" class="v_btn"></a></li>
+                        <li><a href="#" class="v_btn"></a></li>
+                        <li><a href="#" class="v_btn"></a></li>
+                    </ul>
+                    <div id="visual_view">
+                        <!--비주얼1 스토리북-->
+                       <ul id="visual1" class="slide_view">
+                           <li><!--background-image--></li>
+                            <li><span>차이홍 스토리북</span><br>놀이 학습과 문화 학습으로 중국어를 쉽고 재미있게</li>
+                        </ul>
+                        <!--비주얼2 시니어-->
+                       <ul id="visual2" class="slide_view">
+                           <li><!--background-image--></li>
+                            <li><span>차이홍 시니어</span><br>영역별 집중 반복을 통한 회화 실력 향상</li>
+                        </ul>
+                        <!--비주얼3 화상on-->
+                       <ul id="visual3" class="slide_view">
+                           <li><!--background-image--></li>
+                            <li><span>차이홍 화상 ON</span><br>언제 어디서나 내 맘대로 학습하자</li>
+                        </ul> 
+                    </div>
+                </div>
+                <!--지금 시작하자, 차이홍-->
+                <div id="contents1">
+                    <i class="deco_txt">開始</i> <!--장식 글자-->
+                    <div id="contents1_title">
+                        <h1>중국어 지금 시작하자, 차이홍</h1>
+                        <p>중국을 두드려라 세계가 열린다! 세상을 움직이는 힘!</p>
+                    </div>
+                    <table>
+                        <tr>
+                            <td id="txt1"><a href="#"><span>체험 후기</span><br>보러가기<i><!--장식선--></i></a></td>
+                            <td id="image1"></td>
+                            <td id="txt2"><a href="#"><span>무료 Level Test</span><br>하러가기<i><!--장식선--></i></a></td>
+                        </tr>
+                        <tr>
+                            <td id="image2"></td>
+                            <td id="txt3"><a href="#"><span>무료 체험</span><br>신청하기<i><!--장식선--></i></a></td>
+                            <td id="image3"></td>
+                        </tr>
+                    </table>
+                </div>
+<!--------------one-stop 솔루션-->
+                <div id="contents2" class="parallax1">
+                    <h1>ONE-STOP 솔루션</h1>
+                    <ul>
+                        <li>
+                            <i><!--아이콘 이미지--></i>
+                            <p>학습<br>Start</p>
+                        </li>
+                        <li>
+                            <i><!--아이콘 이미지--></i>
+                            <p>중국 문화<br>직간접체험</p>
+                        </li>
+                        <li>
+                            <i><!--아이콘 이미지--></i>
+                            <p>HSK/YCT<br>자격증 취득</p>
+                        </li>
+                        <li>
+                            <i><!--아이콘 이미지--></i>
+                            <p>중국어<br>전문가</p>
+                        </li>
+                    </ul>
+                    <button>차이홍 중국어 소개</button>
+                </div>
+<!--------------단계별 차이홍-->
+                <div id="contents3">
+                    <i class="deco_txt">階段</i> <!--장식 글자-->
+                    <div id="contents3_title">
+                        <h1>단계별 차이홍</h1>
+                        <p>최고의 중국어 학습 프로그램, 최상의 관리 서비스를 만나보세요.</p>
+                    </div>
+                    <div id="con3_container">
+                        <!--인디케이터 버튼-->
+                        <ul id="level_btn">
+                            <li><a href="#" class="con3_btn1">스토리북</a></li>
+                            <li><a href="#" class="con3_btn2">주니어</a></li>
+                            <li><a href="#" class="con3_btn3">시니어</a></li>
+                            <li><a href="#" class="con3_btn4">Biz</a></li>
+                            <li><a href="#" class="con3_btn5">HSK</a></li>
+                            <li><a href="#" class="con3_btn6">한쯔</a></li>
+                        </ul>
+                        <!--본문-->
+                        <div id="container_txt">
+<!--------------------------스토리북-->
+                            <div id="sub1" class="txtbook_slide">
+                                <div id="sub_left">
+                                    <ul>
+                                        <li><!--background image--></li>
+                                        <li><a href="#">학습 음원 다운로드</a></li>
+                                    </ul>
+                                </div>
+                                <div id="sub_right">
+                                    <div id="right_txt">
+                                        <h2>스토리북</h2>
+                                        <p>중국어 선생님이 들려주는 동화</p>
+                                        <table>
+                                            <tr>
+                                                <th>연령</th>
+                                                <td>유아 ~ 초등저학년</td>
+                                            </tr>
+                                            <tr>
+                                                <th>커리큘럼</th>
+                                                <td>
+                                                    입문 : 중국어 발음 마스터<br>
+                                                    기초 : 자기소개, 핵심 문항별 학습<br>
+                                                    초급1 : 32가지 주제의 이야기 구성, 초급 회화<br>
+                                                    중급1 : 기본 어법의 문형별 학습<br>
+                                                    중급2 : 서술문과 회화문 학습을 통한 다양한 표현 학습<br>
+                                                    고급1 : 토론 학습으로 종합적 사고 능력 향상<br>
+                                                    고급2 : 물건 구매하기, 생일, 장소 표현
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+<!--------------------------주니어-->
+                            <div id="sub2" class="txtbook_slide">
+                                <div id="sub_left">
+                                    <ul>
+                                        <li><!--background image--></li>
+                                        <li><a href="#">학습 음원 다운로드</a></li>
+                                    </ul>
+                                </div>
+                                <div id="sub_right">
+                                    <div id="right_txt">
+                                        <h2>주니어</h2>
+                                        <p>단계별 체계적 학습</p>
+                                        <table>
+                                            <tr>
+                                                <th>연령</th>
+                                                <td>초등학년</td>
+                                            </tr>
+                                            <tr>
+                                                <th>커리큘럼</th>
+                                                <td>
+                                                    입문 : 중국어 발음 마스터(병음, 성조)<br>
+                                                    기초 : 자기소개, 핵심 문항별 학습<br>
+                                                    초급 : 32가지 주제의 이야기 구성, 초급 회화 가능<br>
+                                                    중급1 : 기본 어법의 문형별 학습<br>
+                                                    중급2 : 서술문과 회화문 학습을 통한 다양한 표현 학습<br>
+                                                    고급1 : 토론 학습으로 종합적 사고 능력 향상<br>
+                                                    고급2 : 다양한 문장종류 학습을 통해 쓰기능력 향상
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+<!--------------------------시니어-->
+                            <div id="sub3" class="txtbook_slide">
+                                <div id="sub_left">
+                                    <ul>
+                                        <li><!--background image--></li>
+                                        <li><a href="#">학습 음원 다운로드</a></li>
+                                    </ul>
+                                </div>
+                                <div id="sub_right">
+                                    <div id="right_txt">
+                                        <h2>시니어</h2>
+                                        <p>집중 말하기 반복을 통해 회화 실력 향상</p>
+                                        <table>
+                                            <tr>
+                                                <th>연령</th>
+                                                <td>중등 ~ 성인</td>
+                                            </tr>
+                                            <tr>
+                                                <th>커리큘럼</th>
+                                                <td>
+                                                    입문 : 그림을 통한 발음(성조, 운모, 성모) 마스터<br>
+                                                    기초 : 기초 생활 회화 학습<br>
+                                                    초급 : 장소별 초급 회화, HSK 기초 어법<br>
+                                                    중급1 : 일상 생활 상황별 중급 회화 학습, 문장성분별 어법 학습<br>
+                                                    중급2 : 사회 생활을 주제로 한 회화 학습, 자신의 의사 표현<br>
+                                                    고급1 : 현대 핫이슈를 주제로 한 고급 회화 학습, 해석 능력 강화<br>
+                                                    고급2 : 중국의 이슈를 주제로 고급 회화 학습, 작문 강화
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+<!--------------------------Biz-->
+                            <div id="sub4" class="txtbook_slide">
+                                <div id="sub_left">
+                                    <ul>
+                                        <li><!--background image--></li>
+                                        <li><a href="#">학습 음원 다운로드</a></li>
+                                    </ul>
+                                </div>
+                                <div id="sub_right">
+                                    <div id="right_txt">
+                                        <h2>Biz</h2>
+                                        <p>나에게 맞는 맞춤형 실전 중국어</p>
+                                        <table>
+                                            <tr>
+                                                <th>연령</th>
+                                                <td>성인</td>
+                                            </tr>
+                                            <tr>
+                                                <th>커리큘럼</th>
+                                                <td>
+                                                    입문 : 발음(성조, 운모, 성모) 마스터<br>
+                                                    초급1 : 비즈니스 환경의 초급 일상 회화<br>
+                                                    초급2 : 중국 단기 비즈니스 여행 회화<br>
+                                                    중급1 : 일상 업무 회하<br>
+                                                    중급2 : 심화 업무 회화<br>
+                                                    고급1 : 실무 비즈니스 중국어<br>
+                                                    고급2 : 고급 비즈니스 중국어
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+<!--------------------------HSK-->
+                            <div id="sub5" class="txtbook_slide">
+                                <div id="sub_left">
+                                    <ul>
+                                        <li><!--background image--></li>
+                                        <li><a href="#">학습 음원 다운로드</a></li>
+                                    </ul>
+                                </div>
+                                <div id="sub_right">
+                                    <div id="right_txt">
+                                        <h2>HSK</h2>
+                                        <p>자격증과 회화를 동시에</p>
+                                        <table>
+                                            <tr>
+                                                <th>연령</th>
+                                                <td>연령 무관</td>
+                                            </tr>
+                                            <tr>
+                                                <th>커리큘럼</th>
+                                                <td>
+                                                    3급 : 600개 어휘 활용, 중국어 기본 어법<br>
+                                                    4급 : 1,200개 어휘 활용, 중국어 중급 어법<br>
+                                                    5급 : 2,500개 어휘 활용, 중국어 고급 어법
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+<!--------------------------한쯔-->
+                            <div id="sub6" class="txtbook_slide">
+                                <div id="sub_left">
+                                    <ul>
+                                        <li><!--background image--></li>
+                                        <li><a href="#">학습 음원 다운로드</a></li>
+                                    </ul>
+                                </div>
+                                <div id="sub_right">
+                                    <div id="right_txt">
+                                        <h2>한쯔</h2>
+                                        <p>한자의 원리를 이해하여 어휘력 향상</p>
+                                        <table>
+                                            <tr>
+                                                <th>연령</th>
+                                                <td>연령 무관</td>
+                                            </tr>
+                                            <tr>
+                                                <th>커리큘럼</th>
+                                                <td>
+                                                    입문 : 발음(성조, 운모, 성모) 인사말<br>
+                                                    초급1 : 번체자, 간체자(각 72개 단어), 중국어 어휘/문화<br>
+                                                    초급2 : 중국어 어휘 및 간단한 중국어 표현(1), 문화<br>
+                                                    중급 : 중국어 어휘 및 간단한 중국어 표현(2), 문화
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--------------차이홍 화상ON-->
+                <div id="contents4_wrap">
+                    <div id="contents4_bg"></div>
+                    <div id="contents4">
+                        <i class="deco_txt">视象</i> <!--장식 글자-->
+                        <div id="contents4_title">
+                            <h1>차이홍 화상ON</h1>
+                            <p>차이홍 화상교육으로 만나는 신개념 중국어 회화 학습 프로그램</p>
+                        </div>
+                        <div id="contents4_img">
+                            <ul id="con4_img"> <!--background-image-->
+                                <li></li>
+                                <li></li>
+                            </ul>
+                            <ul id="con4_txt">
+                                <li>차이홍 화상교육 강사시스템</li>
+                                <li>40년 차이홍의 채용 시스템을 통해<br>엄선된 선생님을 만나보세요.</li>
+                                <li><button>사이트 바로가기</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+<!--footer-->
+            <footer>
+                <!--footer top-->
+                <div id="f_top">
+                    <div id="ftop_width">
+                        <ul id="ftop_left">
+                            <li><a href="#">회사소개</a><i></i></li>
+                            <li><a href="#">이용약관</a><i></i></li>
+                            <li><a href="#">개인정보처리방침</a><i></i></li>
+                            <li><a href="#">이메일주소무단수집거부</a><i></i></li>
+                            <li><a href="#">법적고지</a></li>
+                        </ul>
+                        <ul id="ftop_right">
+                            <li>
+                                <a href="#">
+                                    <p>브랜드 사이트</p>
+                                    <img src="image/bottom_btn.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p>관계 사이트</p>
+                                    <img src="image/bottom_btn.png">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--footer bottom-->
+                <div id="f_bottom">
+                    <div id="fbtm_left">
+                        <!--logo-->
+                        <h1><a href="#"><img src="image/footerLogo.gif" alt="대교"></a></h1>
+                        <ul>
+                            <li>서울시 관악구 보라매로 3길 23 (보라매동 729-21) 대교타워 (주)대교 대표전화 : 080-222-0909<br>
+                            사업자등록번호 : 112-81-41114 통신판매신고번호 : 제 2013-서울관악-0478호 대표이사 : 박수완</li>
+                            <li>Copyright 2017 DAEKYO Co, LTD. All Rights Reserved.</li>
+                        </ul>
+                    </div>
+                    <div id="fbtm_right">
+                        <p>시작부터 완성까지 중국어는 차이홍</p>
+                        <address>080-222-0909</address>
+                        <p>평일 09:00 ~ 20:00<br>토요일 09:30 ~ 16:00</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
